@@ -1,9 +1,4 @@
-# my_profile
-
 # Hi there, I'm Juan Arismendy 👋
-
-<p align="center">
-  </p>
 
 ![Juan Arismendy](https://avatars.githubusercontent.com/u/36868064?v=4) 
 
@@ -55,9 +50,9 @@ My goal is to leverage this hybrid skillset to tackle challenging projects and d
 
 ### 📫 Let's Connect!
 
-* **Portfolio Website:** [your-portfolio-website.com](https://your-portfolio-website.com) < NARRATOR: Replace with actual link when ready! >
-* **LinkedIn:** [Connect with me on LinkedIn](https://www.linkedin.com/in/your-linkedin-profile/) < NARRATOR: Replace with actual link! >
-* **Email:** `your.email@example.com` < NARRATOR: Replace with actual email! >
+[//]: # (* **Portfolio Website:** [your-portfolio-website.com]&#40;https://your-portfolio-website.com&#41; )
+* **LinkedIn:** [Connect with me on LinkedIn](https://www.linkedin.com/in/juanarismendy16/) 
+* **Email:** `juand16@gmail.com` 
 
 ---
 
