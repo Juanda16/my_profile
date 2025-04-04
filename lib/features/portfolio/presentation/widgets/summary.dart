@@ -45,158 +45,146 @@ Spanish (Native) | English (Fluent).''';
   const _SummaryContent();
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(AppSpacing.medium + 40),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(AppSpacing.medium + 40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            _buildGreeting(),
+            const SizedBox(height: AppSpacing.small),
+            _buildName(),
+            const SizedBox(height: AppSpacing.small),
+            const _JobTitle(),
+            const SizedBox(height: AppSpacing.medium),
+            _buildSummaryText(),
+            const SizedBox(height: AppSpacing.medium),
+            _buildButtons(),
+            const SizedBox(height: AppSpacing.medium),
+            _buildSocialIcons(),
+          ],
+        ),
+      );
+
+  Widget _buildGreeting() => Text.rich(
+        TextSpan(
+          children: <InlineSpan>[
+            TextSpan(
+              text: '\nHELLO,',
+              style: TextStyle(
+                color: AppColors.textSecondary,
+                fontSize: 20,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w400,
+                letterSpacing: 1.60,
+              ),
+            ),
+            const TextSpan(
+              text: ' ',
+            ),
+            TextSpan(
+              text: 'MY NAME IS',
+              style: TextStyle(
+                color: AppColors.textSecondary,
+                fontSize: 20,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w400,
+                letterSpacing: 1.60,
+              ),
+            ),
+          ],
+        ),
+      );
+
+  Widget _buildName() => const Text.rich(
+        TextSpan(
+          children: <InlineSpan>[
+            TextSpan(
+              text: 'Juan',
+              style: TextStyle(
+                color: AppColors.primary,
+                fontSize: 64,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w600,
+                letterSpacing: 5.12,
+              ),
+            ),
+            TextSpan(
+              text: ' Arismendy',
+              style: TextStyle(
+                color: AppColors.textPrimary,
+                fontSize: 64,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w600,
+                letterSpacing: 5.12,
+              ),
+            ),
+          ],
+        ),
+      );
+
+  Widget _buildSummaryText() => const Text(
+        summaryText,
+        style: TextStyle(
+          color: AppColors.textPrimary,
+          fontSize: 18,
+          fontFamily: 'Inter',
+          fontWeight: FontWeight.w400,
+          letterSpacing: 0.60,
+        ),
+      );
+
+  Widget _buildButtons() => Row(
         children: <Widget>[
-          _buildGreeting(),
-          const SizedBox(height: AppSpacing.small),
-          _buildName(),
-          const SizedBox(height: AppSpacing.small),
-          const _JobTitle(),
-          const SizedBox(height: AppSpacing.medium),
-          _buildSummaryText(),
-          const SizedBox(height: AppSpacing.medium),
-          _buildButtons(),
-          const SizedBox(height: AppSpacing.medium),
-          _buildSocialIcons(),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildGreeting() {
-    return Text.rich(
-      TextSpan(
-        children: <InlineSpan>[
-          TextSpan(
-            text: '\nHELLO,',
-            style: TextStyle(
-              color: AppColors.textSecondary,
-              fontSize: 20,
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.w400,
-              letterSpacing: 1.60,
-            ),
+          _RoundedButton(
+            text: 'Download Resume',
+            color: AppColors.primary,
+            onPressed: () {
+              // TODO: Implement download resume logic
+            },
           ),
-          const TextSpan(
-            text: ' ',
-          ),
-          TextSpan(
-            text: 'MY NAME IS',
-            style: TextStyle(
-              color: AppColors.textSecondary,
-              fontSize: 20,
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.w400,
-              letterSpacing: 1.60,
-            ),
+          const SizedBox(width: AppSpacing.medium),
+          _RoundedButton(
+            text: 'Contact Me',
+            borderColor: AppColors.primary,
+            onPressed: () {
+              // TODO: Implement contact me logic
+            },
           ),
         ],
-      ),
-    );
-  }
+      );
 
-  Widget _buildName() {
-    return const Text.rich(
-      TextSpan(
-        children: <InlineSpan>[
-          TextSpan(
-            text: 'Juan',
-            style: TextStyle(
-              color: AppColors.primary,
-              fontSize: 64,
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.w600,
-              letterSpacing: 5.12,
-            ),
+  Widget _buildSocialIcons() => Row(
+        children: <Widget>[
+          _SocialIconButton(
+            icon: Icons.facebook,
+            onPressed: () {
+              // TODO: Implement Facebook link
+            },
           ),
-          TextSpan(
-            text: ' Arismendy',
-            style: TextStyle(
-              color: AppColors.textPrimary,
-              fontSize: 64,
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.w600,
-              letterSpacing: 5.12,
-            ),
+          const SizedBox(width: AppSpacing.small),
+          _SocialIconButton(
+            icon: Icons.mail,
+            onPressed: () {
+              // TODO: Implement Email link
+            },
+          ),
+          const SizedBox(width: AppSpacing.small),
+          _SocialIconButton(
+            icon: Icons.facebook, // TODO: Replace with correct icon
+            onPressed: () {
+              // TODO: Implement other link
+            },
+          ),
+          const SizedBox(width: AppSpacing.small),
+          _SocialIconButton(
+            icon: Icons.contact_mail,
+            onPressed: () {
+              // TODO: Implement contact link
+            },
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildSummaryText() {
-    return const Text(
-      summaryText,
-      style: TextStyle(
-        color: AppColors.textPrimary,
-        fontSize: 18,
-        fontFamily: 'Inter',
-        fontWeight: FontWeight.w400,
-        letterSpacing: 0.60,
-      ),
-    );
-  }
-
-  Widget _buildButtons() {
-    return Row(
-      children: <Widget>[
-        _RoundedButton(
-          text: 'Download Resume',
-          color: AppColors.primary,
-          onPressed: () {
-            // TODO: Implement download resume logic
-          },
-        ),
-        const SizedBox(width: AppSpacing.medium),
-        _RoundedButton(
-          text: 'Contact Me',
-          borderColor: AppColors.primary,
-          onPressed: () {
-            // TODO: Implement contact me logic
-          },
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSocialIcons() {
-    return Row(
-      children: <Widget>[
-        _SocialIconButton(
-          icon: Icons.facebook,
-          onPressed: () {
-            // TODO: Implement Facebook link
-          },
-        ),
-        const SizedBox(width: AppSpacing.small),
-        _SocialIconButton(
-          icon: Icons.mail,
-          onPressed: () {
-            // TODO: Implement Email link
-          },
-        ),
-        const SizedBox(width: AppSpacing.small),
-        _SocialIconButton(
-          icon: Icons.facebook, // TODO: Replace with correct icon
-          onPressed: () {
-            // TODO: Implement other link
-          },
-        ),
-        const SizedBox(width: AppSpacing.small),
-        _SocialIconButton(
-          icon: Icons.contact_mail,
-          onPressed: () {
-            // TODO: Implement contact link
-          },
-        ),
-      ],
-    );
-  }
+      );
 }
 
 // Reusable job title widget
@@ -204,18 +192,16 @@ class _JobTitle extends StatelessWidget {
   const _JobTitle();
 
   @override
-  Widget build(BuildContext context) {
-    return Text(
-      'Software Engineer',
-      style: TextStyle(
-        color: AppColors.textSecondary,
-        fontSize: 24,
-        fontFamily: 'Inter',
-        fontWeight: FontWeight.w400,
-        letterSpacing: 1.92,
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Text(
+        'Software Engineer',
+        style: TextStyle(
+          color: AppColors.textSecondary,
+          fontSize: 24,
+          fontFamily: 'Inter',
+          fontWeight: FontWeight.w400,
+          letterSpacing: 1.92,
+        ),
+      );
 }
 
 // Reusable rounded button widget
@@ -233,33 +219,31 @@ class _RoundedButton extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-        decoration: ShapeDecoration(
-          color: color,
-          shape: RoundedRectangleBorder(
-            side: borderColor != null
-                ? BorderSide(width: 1, color: borderColor!)
-                : BorderSide.none,
-            borderRadius: BorderRadius.circular(AppSpacing.small),
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: onPressed,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          decoration: ShapeDecoration(
+            color: color,
+            shape: RoundedRectangleBorder(
+              side: borderColor != null
+                  ? BorderSide(width: 1, color: borderColor!)
+                  : BorderSide.none,
+              borderRadius: BorderRadius.circular(AppSpacing.small),
+            ),
+          ),
+          child: Text(
+            text,
+            style: TextStyle(
+              color: color != null ? AppColors.textPrimary : borderColor,
+              fontSize: 20,
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.w400,
+              letterSpacing: 0.60,
+            ),
           ),
         ),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: color != null ? AppColors.textPrimary : borderColor,
-            fontSize: 20,
-            fontFamily: 'Inter',
-            fontWeight: FontWeight.w400,
-            letterSpacing: 0.60,
-          ),
-        ),
-      ),
-    );
-  }
+      );
 }
 
 // Reusable social icon button widget
@@ -273,54 +257,50 @@ class _SocialIconButton extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        width: 46,
-        height: 46,
-        decoration: ShapeDecoration(
-          color: AppColors.iconBackground,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSpacing.small),
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: onPressed,
+        child: Container(
+          width: 46,
+          height: 46,
+          decoration: ShapeDecoration(
+            color: AppColors.iconBackground,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppSpacing.small),
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }
 
 class _ProfileImage extends StatelessWidget {
   const _ProfileImage();
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 40.0,
-      ),
-      child: SizedBox(
-        width: 400,
-        height: 800,
-        child: Stack(children: <Widget>[
-          Center(
-            child: CustomPaint(
-              size: const Size(400, 400), // Set the size
-              painter: SemiFilledCirclePainter(),
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 40.0,
+        ),
+        child: SizedBox(
+          width: 400,
+          height: 800,
+          child: Stack(children: <Widget>[
+            Center(
+              child: CustomPaint(
+                size: const Size(400, 400), // Set the size
+                painter: SemiFilledCirclePainter(),
+              ),
             ),
-          ),
-          Positioned(
-            top: 20,
-            child: Image.asset(
-              Images.myPicture,
-              fit: BoxFit.cover,
-              width: 400,
+            Positioned(
+              top: 20,
+              child: Image.asset(
+                Images.myPicture,
+                fit: BoxFit.cover,
+                width: 400,
+              ),
             ),
-          ),
-        ]),
-      ),
-    );
-  }
+          ]),
+        ),
+      );
 }
 
 class SemiFilledCirclePainter extends CustomPainter {

@@ -9,9 +9,9 @@ class AppRouter {
     routes: <RouteBase>[
       GoRoute(
         path: '/',
-        builder: (BuildContext context, GoRouterState state) {
-          return const HomePage(); // Your main page
-        },
+        builder: (BuildContext context, GoRouterState state) =>
+            const HomePage(), // Your main page
+
         // Add routes for /services, /contact if they become separate pages
         // routes: <RouteBase>[
         //   GoRoute(

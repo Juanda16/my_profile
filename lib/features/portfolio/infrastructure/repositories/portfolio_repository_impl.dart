@@ -8,9 +8,8 @@ class PortfolioRepositoryImpl implements PortfolioRepository {
   PortfolioRepositoryImpl({required this.localDataSource});
 
   @override
-  Future<String> getProfileBio() async {
-    return await localDataSource.getProfileBioData();
-  }
+  Future<String> getProfileBio() async =>
+      await localDataSource.getProfileBioData();
 
   @override
   Future<List<Experience>> getExperiences() async {
