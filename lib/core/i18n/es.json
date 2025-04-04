@@ -1,0 +1,15 @@
+{
+  "name": "Juan Arismendy",
+  "home_page": {
+    "home": "Inicio",
+    "about": "Sobre de",
+    "services": "Servicios",
+    "resume": "CV",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "blog": "Blog",
+    "portfolio": "Portafolio",
+    "hire_me": "Contrátame"
+  }
+}

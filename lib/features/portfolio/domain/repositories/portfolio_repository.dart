@@ -1,4 +1,4 @@
-import 'package:mi_profile/features/portfolio/domain/entities/entities.dart';
+import 'package:my_profile/features/portfolio/domain/entities/entities.dart';
 
 abstract class PortfolioRepository {
   /// Fetches the portfolio data from a remote source

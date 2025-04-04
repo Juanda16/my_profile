@@ -7,7 +7,7 @@ import '../features/portfolio/infrastructure/datasources_contract/portfolio_loca
 import '../features/portfolio/infrastructure/repositories/portfolio_repository_impl.dart';
 import '../features/portfolio/presentation/cubit/portfolio_cubit.dart';
 
-final sl = GetIt.instance; // Service Locator
+final GetIt sl = GetIt.instance; // Service Locator
 
 void init() {
   // Features - Portfolio

@@ -18,7 +18,7 @@ class PortfolioCubit extends Cubit<PortfolioState> {
   Future<void> loadData() async {
     try {
       emit(const PortfolioState.loading());
-      final data = await getPortfolioData();
+      final Map<String, dynamic> data = await getPortfolioData();
       emit(PortfolioState.loaded(
         experiences: data['experience'] as List<Experience>,
         projects: data['projects'] as List<Project>,
@@ -28,7 +28,7 @@ class PortfolioCubit extends Cubit<PortfolioState> {
     } catch (e) {
       emit(PortfolioState.error(
           error: true,
-          message: "Failed to load portfolio data: ${e.toString()}"));
+          message: 'Failed to load portfolio data: ${e.toString()}'));
     }
   }
 }
