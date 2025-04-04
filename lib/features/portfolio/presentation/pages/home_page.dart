@@ -34,106 +34,155 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   // --- Summary Section ---
-                  const Summary(),
+                  // This is the main entry point of the portfolio
+                  SectionWidget(
+                    key: sectionKeys['home'],
+                    child: const Summary(),
+                  ),
+
                   // --- Bio/About Section ---
-
                   SectionWidget(
-                      key: sectionKeys['about'], title: 'About'), // Example
+                    key: sectionKeys['about'],
+                    child: Text('About Me',
+                        style: Theme.of(context).textTheme.headlineMedium),
+                  ), // Example
                   SectionWidget(
-                      key: sectionKeys['services'], title: 'Services'),
-                  SectionWidget(key: sectionKeys['resume'], title: 'Resume'),
-
-                  Text('About Me',
-                      style: Theme.of(context).textTheme.headlineMedium),
+                    key: sectionKeys['services'],
+                    child: Text('Services',
+                        style: Theme.of(context).textTheme.headlineMedium),
+                  ),
                   const SizedBox(height: 8),
+                  SectionWidget(
+                      key: sectionKeys['resume'],
+                      child: Text('Resume',
+                          style: Theme.of(context).textTheme.headlineMedium)),
+                  const SizedBox(height: 24),
                   Text(state.bio),
                   const SizedBox(height: 24),
 
                   // --- Skills Section ---
-                  Text('Skills',
-                      style: Theme.of(context).textTheme.headlineMedium),
-                  const SizedBox(height: 8),
-                  Wrap(
-                    // Good for responsiveness
-                    spacing: 8.0,
-                    runSpacing: 4.0,
-                    children: state.skills
-                        //.map((skill) => SkillChip(skill: skill))
-                        .map((Skill skill) => Chip(label: Text(skill.name)))
-                        .toList(),
+                  SectionWidget(
+                    key: sectionKeys['skills'],
+                    child: Column(
+                      children: <Widget>[
+                        Text('Skills',
+                            style: Theme.of(context).textTheme.headlineMedium),
+                        const SizedBox(height: 8),
+                        Wrap(
+                          // Good for responsiveness
+                          spacing: 8.0,
+                          runSpacing: 4.0,
+                          children: state.skills
+                              //.map((skill) => SkillChip(skill: skill))
+                              .map((Skill skill) =>
+                                  Chip(label: Text(skill.name)))
+                              .toList(),
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 24),
+                  SectionWidget(
+                    key: sectionKeys['experience'],
+                    child: Column(
+                      children: <Widget>[
+                        Text('Experience',
+                            style: Theme.of(context).textTheme.headlineMedium),
+                        const SizedBox(height: 8),
+                        ListView.builder(
+                          // Use ListView.builder for dynamic lists
+                          shrinkWrap:
+                              true, // Important inside SingleChildScrollView
+                          physics:
+                              const NeverScrollableScrollPhysics(), // Disable scrolling
+                          itemCount: state.experiences.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              margin: const EdgeInsets.only(bottom: 16.0),
+                              child: ListTile(
+                                title: Text(state.experiences[index].title),
+                                subtitle: Text(
+                                    '${state.experiences[index].description} - ${state.experiences[index].startDate}'),
+                                trailing:
+                                    Text(state.experiences[index].description),
+                              ),
+                            );
+                            // return ExperienceTile(
+                            //     experience: state.experiences[index]);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
 
                   // --- Experience Section ---
-                  Text('Experience',
-                      style: Theme.of(context).textTheme.headlineMedium),
-                  const SizedBox(height: 8),
-                  ListView.builder(
-                    // Use ListView.builder for dynamic lists
-                    shrinkWrap: true, // Important inside SingleChildScrollView
-                    physics:
-                        const NeverScrollableScrollPhysics(), // Disable scrolling
-                    itemCount: state.experiences.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        margin: const EdgeInsets.only(bottom: 16.0),
-                        child: ListTile(
-                          title: Text(state.experiences[index].title),
-                          subtitle: Text(
-                              '${state.experiences[index].description} - ${state.experiences[index].startDate}'),
-                          trailing: Text(state.experiences[index].description),
-                        ),
-                      );
-                      // return ExperienceTile(
-                      //     experience: state.experiences[index]);
-                    },
-                  ),
+
                   const SizedBox(height: 24),
 
                   // --- Projects Section ---
-                  Text('Projects / Services',
-                      style: Theme.of(context).textTheme.headlineMedium),
-                  const SizedBox(height: 8),
-                  // Use ListView or GridView for projects
-                  ListView.builder(
-                    shrinkWrap: true, // Important inside SingleChildScrollView
-                    physics:
-                        const NeverScrollableScrollPhysics(), // Disable scrolling
-                    itemCount: state.projects.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        margin: const EdgeInsets.only(bottom: 16.0),
-                        child: ListTile(
-                          title: Text(state.projects[index].title),
-                          subtitle: Text(
-                              '${state.projects[index].description} - ${state.projects[index].startDate}'),
-                          trailing: Text(state.projects[index].description),
+                  SectionWidget(
+                    key: sectionKeys['projects'],
+                    child: Column(
+                      children: [
+                        Text('Projects / Services',
+                            style: Theme.of(context).textTheme.headlineMedium),
+                        const SizedBox(height: 8),
+                        // Use ListView or GridView for projects
+                        ListView.builder(
+                          shrinkWrap:
+                              true, // Important inside SingleChildScrollView
+                          physics:
+                              const NeverScrollableScrollPhysics(), // Disable scrolling
+                          itemCount: state.projects.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Container(
+                              margin: const EdgeInsets.only(bottom: 16.0),
+                              child: ListTile(
+                                title: Text(state.projects[index].title),
+                                subtitle: Text(
+                                    '${state.projects[index].description} - ${state.projects[index].startDate}'),
+                                trailing:
+                                    Text(state.projects[index].description),
+                              ),
+                            );
+                            //return ProjectCard(project: state.projects[index]);
+                          },
                         ),
-                      );
-                      //return ProjectCard(project: state.projects[index]);
-                    },
+                        const SizedBox(height: 24),
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 24),
 
                   // --- Contact Section ---
-                  Text('Contact',
-                      style: Theme.of(context).textTheme.headlineMedium),
-                  const SizedBox(height: 8),
-                  // Add contact info (Email, LinkedIn, Phone?)
-                  // Use url_launcher to open links
-                  ListTile(
-                    leading: const Icon(Icons.email),
-                    title: const Text('your.email@example.com'), // Your Email
-                    onTap: () {/* Use url_launcher to open mailto: */},
-                  ),
-                  ListTile(
-                    leading: const Icon(
-                        Icons.link), // Replace with LinkedIn Icon if desired
-                    title: const Text('LinkedIn Profile'), // Your LinkedIn
-                    onTap: () {/* Use url_launcher to open LinkedIn URL */},
-                  ),
-                  // Add other contact methods
-                  const SizedBox(height: 24),
+                  SectionWidget(
+                    key: sectionKeys['contact'],
+                    child: Column(
+                      children: [
+                        Text('Contact',
+                            style: Theme.of(context).textTheme.headlineMedium),
+                        const SizedBox(height: 8),
+                        // Add contact info (Email, LinkedIn, Phone?)
+                        // Use url_launcher to open links
+                        ListTile(
+                          leading: const Icon(Icons.email),
+                          title: const Text(
+                              'your.email@example.com'), // Your Email
+                          onTap: () {/* Use url_launcher to open mailto: */},
+                        ),
+                        ListTile(
+                          leading: const Icon(Icons
+                              .link), // Replace with LinkedIn Icon if desired
+                          title:
+                              const Text('LinkedIn Profile'), // Your LinkedIn
+                          onTap: () {
+                            /* Use url_launcher to open LinkedIn URL */
+                          },
+                        ),
+                        // Add other contact methods
+                        const SizedBox(height: 24),
+                      ],
+                    ),
+                  )
                 ],
               ),
             );
@@ -148,21 +197,18 @@ class HomePage extends StatelessWidget {
 }
 
 class SectionWidget extends StatelessWidget {
-  final String title;
-
   const SectionWidget({
-    required this.title,
+    required this.child,
     super.key,
   });
+
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
-      child: Text(
-        title,
-        style: const TextStyle(fontSize: 24),
-      ),
+      child: child,
     );
   }
 }
