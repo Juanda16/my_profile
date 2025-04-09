@@ -4,9 +4,9 @@ class AppTheme {
   static ThemeData get lightTheme => ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
-        colorSchemeSeed: Colors.blue, // Choose your seed color
+        colorSchemeSeed: Colors.blue,
         // Customize fonts, card themes, button themes etc. for a modern look
-        fontFamily: 'Roboto', // Example: Ensure you add font files
+        fontFamily: 'Inter', // Example: Ensure you add font files
         cardTheme: CardTheme(
           elevation: 2,
           shape:
@@ -19,7 +19,8 @@ class AppTheme {
         useMaterial3: true,
         brightness: Brightness.dark,
         colorSchemeSeed: Colors.blue, // Choose your seed color
-        fontFamily: 'Roboto',
+        fontFamily: 'Inter',
+
         cardTheme: CardTheme(
           elevation: 4, // Slightly more elevation might look good in dark
           shape:

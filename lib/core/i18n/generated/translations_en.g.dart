@@ -52,6 +52,8 @@ class TranslationsHomePageEn {
 	// Translations
 	String get home => 'Home';
 	String get about => 'About';
+	String get about_me => 'About Me';
+	String get experience => 'Experience';
 	String get services => 'Services';
 	String get resume => 'Resume';
 	String get skills => 'Skills';
@@ -60,6 +62,10 @@ class TranslationsHomePageEn {
 	String get blog => 'Blog';
 	String get portfolio => 'Portfolio';
 	String get hire_me => 'Hire Me';
+	String get download_cv => 'Download Resume';
+	String get hello => 'HELLO, I\'m';
+	String get software_engineer => 'Software Engineer';
+	String get contact_me => 'Contact Me';
 }
 
 /// Flat map(s) containing all translations.
@@ -70,6 +76,8 @@ extension on Translations {
 			case 'name': return 'Juan Arismendy';
 			case 'home_page.home': return 'Home';
 			case 'home_page.about': return 'About';
+			case 'home_page.about_me': return 'About Me';
+			case 'home_page.experience': return 'Experience';
 			case 'home_page.services': return 'Services';
 			case 'home_page.resume': return 'Resume';
 			case 'home_page.skills': return 'Skills';
@@ -78,6 +86,10 @@ extension on Translations {
 			case 'home_page.blog': return 'Blog';
 			case 'home_page.portfolio': return 'Portfolio';
 			case 'home_page.hire_me': return 'Hire Me';
+			case 'home_page.download_cv': return 'Download Resume';
+			case 'home_page.hello': return 'HELLO, I\'m';
+			case 'home_page.software_engineer': return 'Software Engineer';
+			case 'home_page.contact_me': return 'Contact Me';
 			default: return null;
 		}
 	}

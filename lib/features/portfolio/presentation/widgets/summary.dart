@@ -1,152 +1,124 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:my_profile/core/images/images.dart';
+import 'package:my_profile/core/assets/icons/social_media.dart';
+import 'package:my_profile/core/assets/images/images.dart';
+import 'package:my_profile/core/i18n/generated/translations.g.dart';
 import 'package:my_profile/core/style/style.dart';
+import 'package:my_profile/ui/global_widgets/buttons/rounded_button.dart';
+import 'package:my_profile/ui/global_widgets/buttons/social_media_button.dart';
 
-// Summary widget (main entry point)
+/// A widget that displays a summary of the user's professional profile.
+///
+/// This widget is the main entry point for the summary section, presenting
+/// the user's name, job title, a brief overview of their experience,
+/// and links to download their CV and contact them. It also includes
+/// social media icons and a profile image.
 class Summary extends StatelessWidget {
   const Summary({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    return Container(
-      color: AppColors.background,
-      width: screenWidth,
-      padding: const EdgeInsets.symmetric(vertical: AppSpacing.medium),
-      child: const Row(
+  Widget build(BuildContext context) => const Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Expanded(
             flex: 2,
             child: _SummaryContent(),
           ),
-          // const Spacer(flex: 1),
+          spaceH32,
           _ProfileImage(),
         ],
-      ),
-    );
-  }
+      );
 }
 
-// Content on the left side of the summary
+/// The content displayed on the left side of the summary section.
+///
+/// This includes the greeting, name, job title, summary text, buttons
+/// for downloading the CV and contacting, and social media icons.
 class _SummaryContent extends StatelessWidget {
-  static const String summaryText =
-      '''Hardware/Software Integration Specialist & Flutter Developer with 12+ years of combined experience in Mechatronics, Systems Engineering, and Software Development. 
-My expertise lies in translating complex operational needs into integrated digital solutions, particularly focused on: Industrial IoT & Monitoring: Developing Flutter apps connected to custom or existing sensors/PLCs for real-time data visualization and control.
-Legacy System Modernization: Creating modern, cross-platform interfaces (Flutter) for older industrial equipment.
-Custom Electronics & Prototyping: Designing and integrating specialized hardware components with software counterparts.
-Automation Solutions: Leveraging both hardware control and software interfaces (Flutter, Dart) for bespoke automation tasks.
-Passionate about robotics and bridging the OT/IT gap.
-Spanish (Native) | English (Fluent).''';
+  // Extracted Summary Text as a Constant
+  static const String _summaryText =
+      '''Experienced Hardware/Software Integration Specialist and Flutter Developer (12+ years in Mechatronics, Systems Engineering, and Software Development). Skilled in creating integrated digital solutions, including Industrial IoT, legacy system modernization (Flutter), custom electronics/prototyping,  and automation (Flutter, Dart). Focus on bridging the OT/IT gap. Fluent in Spanish and English.''';
 
   const _SummaryContent();
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(AppSpacing.medium + 40),
+        padding: const EdgeInsets.all(AppSpacing.medium),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          //mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            _buildGreeting(),
+            _buildGreeting(context),
             const SizedBox(height: AppSpacing.small),
-            _buildName(),
+            _buildName(context),
             const SizedBox(height: AppSpacing.small),
             const _JobTitle(),
             const SizedBox(height: AppSpacing.medium),
-            _buildSummaryText(),
+            _buildSummaryText(context),
             const SizedBox(height: AppSpacing.medium),
-            _buildButtons(),
-            const SizedBox(height: AppSpacing.medium),
-            _buildSocialIcons(),
+            _buildButtons(context),
+            const SizedBox(height: AppSpacing.large),
+            _buildSocialIcons(context),
           ],
         ),
       );
 
-  Widget _buildGreeting() => Text.rich(
+  /// Builds the greeting text.
+  Widget _buildGreeting(BuildContext context) => Text.rich(
         TextSpan(
           children: <InlineSpan>[
             TextSpan(
-              text: '\nHELLO,',
-              style: TextStyle(
-                color: AppColors.textSecondary,
-                fontSize: 20,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w400,
-                letterSpacing: 1.60,
-              ),
-            ),
-            const TextSpan(
-              text: ' ',
-            ),
-            TextSpan(
-              text: 'MY NAME IS',
-              style: TextStyle(
-                color: AppColors.textSecondary,
-                fontSize: 20,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w400,
-                letterSpacing: 1.60,
+              text: translate.home_page.hello,
+              style: context.textTheme.titleSmall?.copyWith(
+                letterSpacing: 4,
               ),
             ),
           ],
         ),
       );
 
-  Widget _buildName() => const Text.rich(
+  /// Builds the user's name text.
+  Widget _buildName(BuildContext context) => Text.rich(
         TextSpan(
           children: <InlineSpan>[
             TextSpan(
-              text: 'Juan',
-              style: TextStyle(
-                color: AppColors.primary,
-                fontSize: 64,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w600,
-                letterSpacing: 5.12,
-              ),
-            ),
+                text: 'Juan David',
+                style: context.textTheme.displaySmall?.copyWith(
+                    color: AppColors.primary, fontWeight: FontWeight.bold)),
             TextSpan(
               text: ' Arismendy',
-              style: TextStyle(
-                color: AppColors.textPrimary,
-                fontSize: 64,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w600,
-                letterSpacing: 5.12,
-              ),
+              style: context.textTheme.displaySmall,
             ),
           ],
         ),
       );
 
-  Widget _buildSummaryText() => const Text(
-        summaryText,
-        style: TextStyle(
-          color: AppColors.textPrimary,
-          fontSize: 18,
-          fontFamily: 'Inter',
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0.60,
-        ),
+  /// Builds the summary text.
+  Widget _buildSummaryText(BuildContext context) => Text(
+        _summaryText,
+        style: context.textTheme.bodyLarge,
+        textAlign: TextAlign.justify,
+        overflow: TextOverflow.visible,
+        softWrap: true,
       );
 
-  Widget _buildButtons() => Row(
+  /// Builds the buttons for downloading the CV and contacting the user.
+  Widget _buildButtons(BuildContext context) => Row(
         children: <Widget>[
-          _RoundedButton(
-            text: 'Download Resume',
-            color: AppColors.primary,
+          RoundedButton(
+            text: translate.home_page.download_cv,
+            backgroundColor: AppColors.primary,
             onPressed: () {
               // TODO: Implement download resume logic
             },
           ),
           const SizedBox(width: AppSpacing.medium),
-          _RoundedButton(
-            text: 'Contact Me',
+          RoundedButton(
+            text: translate.home_page.contact_me,
             borderColor: AppColors.primary,
+            textColor: AppColors.textPrimary,
             onPressed: () {
               // TODO: Implement contact me logic
             },
@@ -154,31 +126,33 @@ Spanish (Native) | English (Fluent).''';
         ],
       );
 
-  Widget _buildSocialIcons() => Row(
+  /// Builds the social media icon buttons.
+  Widget _buildSocialIcons(BuildContext context) => Row(
         children: <Widget>[
-          _SocialIconButton(
-            icon: Icons.facebook,
+          SocialMediaButton(
+            icon: SocialIcon.linkedin,
+            iconColor: AppColors.primary,
             onPressed: () {
-              // TODO: Implement Facebook link
+              // TODO: Implement LinkedIn link
             },
           ),
           const SizedBox(width: AppSpacing.small),
-          _SocialIconButton(
-            icon: Icons.mail,
+          SocialMediaButton(
+            icon: SocialIcon.mail,
             onPressed: () {
               // TODO: Implement Email link
             },
           ),
           const SizedBox(width: AppSpacing.small),
-          _SocialIconButton(
-            icon: Icons.facebook, // TODO: Replace with correct icon
+          SocialMediaButton(
+            icon: SocialIcon.twitter,
             onPressed: () {
               // TODO: Implement other link
             },
           ),
           const SizedBox(width: AppSpacing.small),
-          _SocialIconButton(
-            icon: Icons.contact_mail,
+          SocialMediaButton(
+            icon: SocialIcon.github,
             onPressed: () {
               // TODO: Implement contact link
             },
@@ -187,88 +161,14 @@ Spanish (Native) | English (Fluent).''';
       );
 }
 
-// Reusable job title widget
+/// A reusable widget for displaying the job title.
 class _JobTitle extends StatelessWidget {
   const _JobTitle();
 
   @override
   Widget build(BuildContext context) => Text(
-        'Software Engineer',
-        style: TextStyle(
-          color: AppColors.textSecondary,
-          fontSize: 24,
-          fontFamily: 'Inter',
-          fontWeight: FontWeight.w400,
-          letterSpacing: 1.92,
-        ),
-      );
-}
-
-// Reusable rounded button widget
-class _RoundedButton extends StatelessWidget {
-  final String text;
-  final Color? color;
-  final Color? borderColor;
-  final VoidCallback onPressed;
-
-  const _RoundedButton({
-    required this.text,
-    this.color,
-    this.borderColor,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) => GestureDetector(
-        onTap: onPressed,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          decoration: ShapeDecoration(
-            color: color,
-            shape: RoundedRectangleBorder(
-              side: borderColor != null
-                  ? BorderSide(width: 1, color: borderColor!)
-                  : BorderSide.none,
-              borderRadius: BorderRadius.circular(AppSpacing.small),
-            ),
-          ),
-          child: Text(
-            text,
-            style: TextStyle(
-              color: color != null ? AppColors.textPrimary : borderColor,
-              fontSize: 20,
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.w400,
-              letterSpacing: 0.60,
-            ),
-          ),
-        ),
-      );
-}
-
-// Reusable social icon button widget
-class _SocialIconButton extends StatelessWidget {
-  final IconData icon;
-  final VoidCallback onPressed;
-
-  const _SocialIconButton({
-    required this.icon,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) => GestureDetector(
-        onTap: onPressed,
-        child: Container(
-          width: 46,
-          height: 46,
-          decoration: ShapeDecoration(
-            color: AppColors.iconBackground,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppSpacing.small),
-            ),
-          ),
-        ),
+        translate.home_page.software_engineer,
+        style: context.textTheme.titleMedium,
       );
 }
 
@@ -277,42 +177,54 @@ class _ProfileImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 40.0,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 50.0),
         child: SizedBox(
           width: 400,
-          height: 800,
-          child: Stack(children: <Widget>[
-            Center(
-              child: CustomPaint(
-                size: const Size(400, 400), // Set the size
-                painter: SemiFilledCirclePainter(),
+          height: 400,
+          child: Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: CustomPaint(
+                  size: const Size(400, 400),
+                  painter: _SemiFilledCirclePainter(
+                    color: AppColors.primary,
+                  ),
+                ),
               ),
-            ),
-            Positioned(
-              top: 20,
-              child: Image.asset(
-                Images.myPicture,
-                fit: BoxFit.cover,
-                width: 400,
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: ClipOval(
+                  clipper: _CircleClipper(diameter: 400),
+                  child: Image.asset(
+                    Images.myPicture,
+                    fit: BoxFit.cover,
+                    width: 400,
+                    height: 400,
+                  ),
+                ),
               ),
-            ),
-          ]),
+            ],
+          ),
         ),
       );
 }
 
-class SemiFilledCirclePainter extends CustomPainter {
+/// A custom painter for drawing a semi-filled circle.
+class _SemiFilledCirclePainter extends CustomPainter {
+  _SemiFilledCirclePainter({this.color = AppColors.primary});
+
+  final Color color;
+
   @override
   void paint(Canvas canvas, Size size) {
     final Paint borderPaint = Paint()
-      ..color = Colors.pink
+      ..color = color
       ..style = PaintingStyle.stroke
       ..strokeWidth = 5;
 
     final Paint fillPaint = Paint()
-      ..color = Colors.pink
+      ..color = color
       ..style = PaintingStyle.fill;
 
     final double radius = size.width / 2;
@@ -337,4 +249,31 @@ class SemiFilledCirclePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+/// A custom clipper that clips its child in a circle.
+class _CircleClipper extends CustomClipper<Rect> {
+  /// The diameter of the circle used for clipping.
+  final double diameter;
+
+  /// Creates a [_CircleClipper] with the given [diameter].
+  _CircleClipper({required this.diameter});
+
+  @override
+  Rect getClip(Size size) {
+    // Calculate the radius of the circle.
+    final double radius = diameter / 2;
+
+    // Calculate the center point of the circle.  We'll center it within the
+    // available size.
+    final Offset center = Offset(size.width / 2, (size.height / 2) - 4);
+
+    // Create a rectangle that represents the clipping region (a circle in this case).
+    // We use Rect.fromCircle to create a rectangle enclosing the circle.
+    return Rect.fromCircle(center: center, radius: radius);
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Rect> oldClipper) =>
+      (oldClipper as _CircleClipper).diameter != diameter;
 }

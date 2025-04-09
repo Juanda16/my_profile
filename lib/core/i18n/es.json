@@ -3,6 +3,8 @@
   "home_page": {
     "home": "Inicio",
     "about": "Sobre de",
+    "about_me": "Sobre mí",
+    "experience": "experiencia",
     "services": "Servicios",
     "resume": "CV",
     "skills": "Habilidades",
@@ -10,6 +12,10 @@
     "contact": "Contacto",
     "blog": "Blog",
     "portfolio": "Portafolio",
-    "hire_me": "Contrátame"
+    "hire_me": "Contrátame",
+    "download_cv": "Descargar CV",
+    "hello": "HOLA, Soy",
+    "software_engineer": "Ingeniero de Software",
+    "contact_me": "Contáctame"
   }
 }

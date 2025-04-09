@@ -49,6 +49,8 @@ class _TranslationsHomePageEs implements TranslationsHomePageEn {
 	// Translations
 	@override String get home => 'Inicio';
 	@override String get about => 'Sobre de';
+	@override String get about_me => 'Sobre mí';
+	@override String get experience => 'experiencia';
 	@override String get services => 'Servicios';
 	@override String get resume => 'CV';
 	@override String get skills => 'Habilidades';
@@ -57,6 +59,10 @@ class _TranslationsHomePageEs implements TranslationsHomePageEn {
 	@override String get blog => 'Blog';
 	@override String get portfolio => 'Portafolio';
 	@override String get hire_me => 'Contrátame';
+	@override String get download_cv => 'Descargar CV';
+	@override String get hello => 'HOLA, Soy';
+	@override String get software_engineer => 'Ingeniero de Software';
+	@override String get contact_me => 'Contáctame';
 }
 
 /// Flat map(s) containing all translations.
@@ -67,6 +73,8 @@ extension on TranslationsEs {
 			case 'name': return 'Juan Arismendy';
 			case 'home_page.home': return 'Inicio';
 			case 'home_page.about': return 'Sobre de';
+			case 'home_page.about_me': return 'Sobre mí';
+			case 'home_page.experience': return 'experiencia';
 			case 'home_page.services': return 'Servicios';
 			case 'home_page.resume': return 'CV';
 			case 'home_page.skills': return 'Habilidades';
@@ -75,6 +83,10 @@ extension on TranslationsEs {
 			case 'home_page.blog': return 'Blog';
 			case 'home_page.portfolio': return 'Portafolio';
 			case 'home_page.hire_me': return 'Contrátame';
+			case 'home_page.download_cv': return 'Descargar CV';
+			case 'home_page.hello': return 'HOLA, Soy';
+			case 'home_page.software_engineer': return 'Ingeniero de Software';
+			case 'home_page.contact_me': return 'Contáctame';
 			default: return null;
 		}
 	}

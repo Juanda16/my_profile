@@ -53,10 +53,10 @@ class _NavbarWebState extends State<NavbarWeb> {
 
     return AppBar(
       backgroundColor: colorScheme.surface,
-      elevation: 0,
-      toolbarHeight: kToolbarHeight + 40.0,
+      elevation: 4,
+      toolbarHeight: kToolbarHeight + 80.0,
       title: Padding(
-        padding: const EdgeInsets.only(top: 40.0),
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -119,17 +119,25 @@ class _NavbarWebState extends State<NavbarWeb> {
   ///
   /// Creates a row of [_navItem] widgets, each representing a section of the
   /// homepage, and a "Hire Me" button.
-  Widget _buildNavItems(ColorScheme colorScheme) => Row(
-        children: <Widget>[
-          _navItem(translate.home_page.home, colorScheme, Section.home),
-          _navItem(translate.home_page.about, colorScheme, Section.about),
-          _navItem(translate.home_page.services, colorScheme, Section.services),
-          _navItem(translate.home_page.resume, colorScheme, Section.resume),
-          _navItem(translate.home_page.skills, colorScheme, Section.skills),
-          _navItem(translate.home_page.projects, colorScheme, Section.projects),
-          _navItem(translate.home_page.contact, colorScheme, Section.contact),
-          _hireMeButton(colorScheme),
-        ],
+  Widget _buildNavItems(ColorScheme colorScheme) => Expanded(
+        child: Wrap(
+          alignment: WrapAlignment.end,
+          spacing: 10,
+          runSpacing: 20,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: <Widget>[
+            _navItem(translate.home_page.home, colorScheme, Section.home),
+            _navItem(translate.home_page.about, colorScheme, Section.about),
+            _navItem(
+                translate.home_page.services, colorScheme, Section.services),
+            _navItem(translate.home_page.resume, colorScheme, Section.resume),
+            _navItem(translate.home_page.skills, colorScheme, Section.skills),
+            _navItem(
+                translate.home_page.projects, colorScheme, Section.projects),
+            _navItem(translate.home_page.contact, colorScheme, Section.contact),
+            _hireMeButton(colorScheme),
+          ],
+        ),
       );
 
   /// Creates a single navigation item (link).
