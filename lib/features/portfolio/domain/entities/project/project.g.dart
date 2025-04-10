@@ -8,6 +8,7 @@ part of 'project.dart';
 
 _Project _$ProjectFromJson(Map<String, dynamic> json) => _Project(
       title: json['title'] as String,
+      subtitle: json['subtitle'] as String?,
       description: json['description'] as String,
       technologies: (json['technologies'] as List<dynamic>)
           .map((e) => e as String)
@@ -23,6 +24,7 @@ _Project _$ProjectFromJson(Map<String, dynamic> json) => _Project(
 
 Map<String, dynamic> _$ProjectToJson(_Project instance) => <String, dynamic>{
       'title': instance.title,
+      'subtitle': instance.subtitle,
       'description': instance.description,
       'technologies': instance.technologies,
       'imageUrl': instance.imageUrl,

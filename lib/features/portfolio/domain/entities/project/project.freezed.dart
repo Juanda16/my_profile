@@ -16,6 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Project {
   String get title;
+  String? get subtitle;
   String get description;
   List<String> get technologies;
   String? get imageUrl;
@@ -38,6 +39,8 @@ mixin _$Project {
         (other.runtimeType == runtimeType &&
             other is Project &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.subtitle, subtitle) ||
+                other.subtitle == subtitle) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality()
@@ -54,6 +57,7 @@ mixin _$Project {
   int get hashCode => Object.hash(
       runtimeType,
       title,
+      subtitle,
       description,
       const DeepCollectionEquality().hash(technologies),
       imageUrl,
@@ -62,7 +66,7 @@ mixin _$Project {
 
   @override
   String toString() {
-    return 'Project(title: $title, description: $description, technologies: $technologies, imageUrl: $imageUrl, startDate: $startDate, endDate: $endDate)';
+    return 'Project(title: $title, subtitle: $subtitle, description: $description, technologies: $technologies, imageUrl: $imageUrl, startDate: $startDate, endDate: $endDate)';
   }
 }
 
@@ -73,6 +77,7 @@ abstract mixin class $ProjectCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
+      String? subtitle,
       String description,
       List<String> technologies,
       String? imageUrl,
@@ -93,6 +98,7 @@ class _$ProjectCopyWithImpl<$Res> implements $ProjectCopyWith<$Res> {
   @override
   $Res call({
     Object? title = null,
+    Object? subtitle = freezed,
     Object? description = null,
     Object? technologies = null,
     Object? imageUrl = freezed,
@@ -104,6 +110,10 @@ class _$ProjectCopyWithImpl<$Res> implements $ProjectCopyWith<$Res> {
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      subtitle: freezed == subtitle
+          ? _self.subtitle
+          : subtitle // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: null == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -133,6 +143,7 @@ class _$ProjectCopyWithImpl<$Res> implements $ProjectCopyWith<$Res> {
 class _Project implements Project {
   const _Project(
       {required this.title,
+      this.subtitle,
       required this.description,
       required final List<String> technologies,
       this.imageUrl,
@@ -144,6 +155,8 @@ class _Project implements Project {
 
   @override
   final String title;
+  @override
+  final String? subtitle;
   @override
   final String description;
   final List<String> _technologies;
@@ -182,6 +195,8 @@ class _Project implements Project {
         (other.runtimeType == runtimeType &&
             other is _Project &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.subtitle, subtitle) ||
+                other.subtitle == subtitle) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             const DeepCollectionEquality()
@@ -198,6 +213,7 @@ class _Project implements Project {
   int get hashCode => Object.hash(
       runtimeType,
       title,
+      subtitle,
       description,
       const DeepCollectionEquality().hash(_technologies),
       imageUrl,
@@ -206,7 +222,7 @@ class _Project implements Project {
 
   @override
   String toString() {
-    return 'Project(title: $title, description: $description, technologies: $technologies, imageUrl: $imageUrl, startDate: $startDate, endDate: $endDate)';
+    return 'Project(title: $title, subtitle: $subtitle, description: $description, technologies: $technologies, imageUrl: $imageUrl, startDate: $startDate, endDate: $endDate)';
   }
 }
 
@@ -218,6 +234,7 @@ abstract mixin class _$ProjectCopyWith<$Res> implements $ProjectCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
+      String? subtitle,
       String description,
       List<String> technologies,
       String? imageUrl,
@@ -238,6 +255,7 @@ class __$ProjectCopyWithImpl<$Res> implements _$ProjectCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   $Res call({
     Object? title = null,
+    Object? subtitle = freezed,
     Object? description = null,
     Object? technologies = null,
     Object? imageUrl = freezed,
@@ -249,6 +267,10 @@ class __$ProjectCopyWithImpl<$Res> implements _$ProjectCopyWith<$Res> {
           ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      subtitle: freezed == subtitle
+          ? _self.subtitle
+          : subtitle // ignore: cast_nullable_to_non_nullable
+              as String?,
       description: null == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable

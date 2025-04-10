@@ -66,6 +66,23 @@ class TranslationsHomePageEn {
 	String get hello => 'HELLO, I\'m';
 	String get software_engineer => 'Software Engineer';
 	String get contact_me => 'Contact Me';
+	String get slogan => 'I like to make things happen';
+	String get special_services => 'Special Services';
+	String get development => 'Development';
+	TextSpan my_special_services({required InlineSpan specialServices, required InlineSpan development}) => TextSpan(children: [
+		const TextSpan(text: 'My '),
+		specialServices,
+		const TextSpan(text: ' For Your Business '),
+		development,
+	]);
+	String get professional_skills => 'Professional Skills';
+	String get my_skills => 'My Skills';
+	String get my_talents => 'My Talents';
+	String get latest_projects => 'Latest Projects';
+	TextSpan explore_projects({required InlineSpan Projects}) => TextSpan(children: [
+		const TextSpan(text: 'Explore My Popular '),
+		Projects,
+	]);
 }
 
 /// Flat map(s) containing all translations.
@@ -90,6 +107,23 @@ extension on Translations {
 			case 'home_page.hello': return 'HELLO, I\'m';
 			case 'home_page.software_engineer': return 'Software Engineer';
 			case 'home_page.contact_me': return 'Contact Me';
+			case 'home_page.slogan': return 'I like to make things happen';
+			case 'home_page.special_services': return 'Special Services';
+			case 'home_page.development': return 'Development';
+			case 'home_page.my_special_services': return ({required InlineSpan specialServices, required InlineSpan development}) => TextSpan(children: [
+				const TextSpan(text: 'My '),
+				specialServices,
+				const TextSpan(text: ' For Your Business '),
+				development,
+			]);
+			case 'home_page.professional_skills': return 'Professional Skills';
+			case 'home_page.my_skills': return 'My Skills';
+			case 'home_page.my_talents': return 'My Talents';
+			case 'home_page.latest_projects': return 'Latest Projects';
+			case 'home_page.explore_projects': return ({required InlineSpan Projects}) => TextSpan(children: [
+				const TextSpan(text: 'Explore My Popular '),
+				Projects,
+			]);
 			default: return null;
 		}
 	}

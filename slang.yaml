@@ -4,4 +4,4 @@ input_file_pattern: .json
 output_directory: lib/core/i18n/generated
 output_file_name: translations.g.dart
 translate_var: translate
-string_interpolation: double_braces
+

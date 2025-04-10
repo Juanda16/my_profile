@@ -16,6 +16,15 @@
     "download_cv": "Download Resume",
     "hello": "HELLO, I'm",
     "software_engineer": "Software Engineer",
-    "contact_me": "Contact Me"
+    "contact_me": "Contact Me",
+    "slogan": "I like to make things happen",
+    "special_services": "Special Services",
+    "development": "Development",
+    "my_special_services(rich)": "My ${specialServices} For Your Business ${development}",
+    "professional_skills": "Professional Skills",
+    "my_skills": "My Skills",
+    "my_talents": "My Talents",
+    "latest_projects": "Latest Projects",
+    "explore_projects(rich)": "Explore My Popular $Projects"
   }
 }

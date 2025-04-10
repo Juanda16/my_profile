@@ -6,7 +6,7 @@ enum Section {
   home,
   about,
   services,
-  resume,
+  // resume,
   skills,
   experience,
   projects,
@@ -125,12 +125,19 @@ class _NavbarWebState extends State<NavbarWeb> {
           spacing: 10,
           runSpacing: 20,
           crossAxisAlignment: WrapCrossAlignment.center,
+          // children: <Widget>[
+          //   ...Section.values.map(
+          //     (Section section) =>
+          //         _navItem(translate.home_page.home, colorScheme, section),
+          //   ),
+          //   _hireMeButton(colorScheme),
+          // ]
           children: <Widget>[
             _navItem(translate.home_page.home, colorScheme, Section.home),
             _navItem(translate.home_page.about, colorScheme, Section.about),
             _navItem(
                 translate.home_page.services, colorScheme, Section.services),
-            _navItem(translate.home_page.resume, colorScheme, Section.resume),
+            // _navItem(translate.home_page.resume, colorScheme, Section.resume),
             _navItem(translate.home_page.skills, colorScheme, Section.skills),
             _navItem(
                 translate.home_page.projects, colorScheme, Section.projects),

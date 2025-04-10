@@ -7,6 +7,7 @@ part 'project.g.dart';
 abstract class Project with _$Project {
   const factory Project({
     required String title,
+    String? subtitle,
     required String description,
     required List<String> technologies,
     String? imageUrl,

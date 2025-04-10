@@ -63,6 +63,25 @@ class _TranslationsHomePageEs implements TranslationsHomePageEn {
 	@override String get hello => 'HOLA, Soy';
 	@override String get software_engineer => 'Ingeniero de Software';
 	@override String get contact_me => 'Contáctame';
+	@override String get slogan => 'Me gusta hacer que las cosas sucedan';
+	@override String get special_services => 'Servicios Especiales';
+	@override String get development => 'Desarrollo';
+	@override TextSpan my_special_services({required InlineSpan specialServices, required InlineSpan development}) => TextSpan(children: [
+		const TextSpan(text: 'Mis '),
+		specialServices,
+		const TextSpan(text: ' para el '),
+		development,
+		const TextSpan(text: ' de tu negocio'),
+	]);
+	@override String get professional_skills => 'Habilidades Profesionales';
+	@override String get my_skills => 'Mis Habilidades';
+	@override String get my_talents => 'Mis Talentos';
+	@override String get latest_projects => 'Últimos Proyectos';
+	@override TextSpan explore_projects({required InlineSpan Projects}) => TextSpan(children: [
+		const TextSpan(text: 'Explora Mis '),
+		Projects,
+		const TextSpan(text: ' Más Recientes'),
+	]);
 }
 
 /// Flat map(s) containing all translations.
@@ -87,6 +106,25 @@ extension on TranslationsEs {
 			case 'home_page.hello': return 'HOLA, Soy';
 			case 'home_page.software_engineer': return 'Ingeniero de Software';
 			case 'home_page.contact_me': return 'Contáctame';
+			case 'home_page.slogan': return 'Me gusta hacer que las cosas sucedan';
+			case 'home_page.special_services': return 'Servicios Especiales';
+			case 'home_page.development': return 'Desarrollo';
+			case 'home_page.my_special_services': return ({required InlineSpan specialServices, required InlineSpan development}) => TextSpan(children: [
+				const TextSpan(text: 'Mis '),
+				specialServices,
+				const TextSpan(text: ' para el '),
+				development,
+				const TextSpan(text: ' de tu negocio'),
+			]);
+			case 'home_page.professional_skills': return 'Habilidades Profesionales';
+			case 'home_page.my_skills': return 'Mis Habilidades';
+			case 'home_page.my_talents': return 'Mis Talentos';
+			case 'home_page.latest_projects': return 'Últimos Proyectos';
+			case 'home_page.explore_projects': return ({required InlineSpan Projects}) => TextSpan(children: [
+				const TextSpan(text: 'Explora Mis '),
+				Projects,
+				const TextSpan(text: ' Más Recientes'),
+			]);
 			default: return null;
 		}
 	}

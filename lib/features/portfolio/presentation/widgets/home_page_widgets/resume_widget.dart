@@ -8,7 +8,7 @@ class ResumeWidget extends StatelessWidget {
         children: <Widget>[
           SizedBox(
             width: 1359,
-            height: 2800,
+            height: 2000,
             child: Stack(
               children: <Widget>[
                 const Positioned(

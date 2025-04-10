@@ -15,7 +15,7 @@ class Images {
   static String get customAlertComingSoon =>
       'assets/images/settings_img_alert.svg';
 
-  static String get defaultToken => 'assets/images/default_token.png';
+  static String get defaultToken => 'assets/images/default.png';
   static String get platform => 'assets/icons/platform.png';
 
   static Widget _defaultLogoImage(double size) => Image(
@@ -41,6 +41,45 @@ class Images {
         height: size,
       );
     }
+
+    if (isSvgImage) {
+      return SvgPicture.network(
+        url,
+        placeholderBuilder: (_) => Image(
+          image: AssetImage(defaultToken),
+          width: size,
+          height: size,
+          errorBuilder: (___, __, _) => Image(
+            image: AssetImage(defaultToken),
+            width: size,
+            height: size,
+          ),
+        ),
+        height: size,
+        width: size,
+      );
+    } else {
+      return CachedNetworkImage(
+        imageUrl: url,
+        placeholder: (__, _) => Image(
+          image: AssetImage(defaultToken),
+          width: size,
+          height: size,
+        ),
+        errorWidget: (___, __, _) => Image(
+          image: AssetImage(defaultToken),
+          width: size,
+          height: size,
+        ),
+        fadeOutDuration: const Duration(milliseconds: 500),
+        width: size,
+        height: size,
+      );
+    }
+  }
+
+  static Widget networkImage(String url, double size) {
+    final bool isSvgImage = url.endsWith('.svg');
 
     if (isSvgImage) {
       return SvgPicture.network(
